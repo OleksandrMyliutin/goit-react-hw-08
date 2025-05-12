@@ -1,14 +1,18 @@
 import { Field, Form, Formik } from 'formik'
 import React from 'react'
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { loginThunk } from '../redux/auth/operations';
 
 const LoginForm = () => {
+    const dispatch = useDispatch();
     const initialValues = {
         email: '',
         password: ''
     };
     const handleSubmit = (values, options) => {
         console.log(values);
+        dispatch(loginThunk(values));
     }
   return (
     <div>
@@ -37,6 +41,10 @@ const LoginForm = () => {
                             </p>
                         </Form>
                     </Formik>
+                    <div className='divider divider-ghost'></div>
+                    <Link className='text-mg text-center'to='/'>
+                        Back to Home
+                    </Link>
                 </div>
                 </div>
             </div>
