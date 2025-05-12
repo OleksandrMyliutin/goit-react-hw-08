@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import ContactForm from './ContactForm/ContactForm'
 import SearchBox from './SearchBox/SearchBox'
 import { useEffect } from 'react';
-import { fetchDataThunk } from '../redux/contacts/contactsOps.js';
+import { fetchDataThunk } from '../redux/contacts/operations.js';
 import Home from '../pages/Home.jsx';
 import Login from '../pages/Login.jsx';
 import Register from '../pages/Register.jsx';
