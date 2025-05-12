@@ -2,7 +2,6 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
 import { nanoid } from 'nanoid';
-import css from './ContactForm.module.css'; // Імпорт стилів
 import { addContactThunk } from '../../redux/contactsOps.js';
 
 
@@ -39,20 +38,20 @@ export default function ContactForm() {
       validationSchema={ContactSchema}
       onSubmit={handleSubmit}
     >
-      <Form className={css.form}>
-        <div className={css.input}>
-          <label htmlFor={nameFieldId}>Name</label>
-          <Field className={css.field} type="text" name="name" id={nameFieldId} />
-          <ErrorMessage name="name" component="div" className={css.error} />
+      <Form className="bg-base-200 border border-base-300 rounded-box p-6 w-full max-w-md mx-auto shadow-lg">
+        <div className="form-control mb-4">
+          <label htmlFor={nameFieldId}className="label"><span className="label-text">Name</span></label>
+          <Field className="input input-bordered w-full" type="text" name="name" id={nameFieldId} />
+          <ErrorMessage name="name" component="div" className="text-error text-sm mt-1" />
         </div>
 
-        <div className={css.input}>
-          <label htmlFor={numberFieldId}>Number</label>
-          <Field className={css.field} type="text" name="number" id={numberFieldId} />
-          <ErrorMessage name="number" component="div" className={css.error} />
+        <div className="form-control mb-4">
+          <label htmlFor={numberFieldId} className="label"><span className="label-text">Number</span></label>
+          <Field className="input input-bordered w-full" type="text" name="number" id={numberFieldId} />
+          <ErrorMessage name="number" component="div" className="text-error text-sm mt-1" />
         </div>
 
-        <button type="submit" className={css.button}>
+        <button type="submit" className="btn btn-primary w-full">
           Add contact
         </button>
       </Form>

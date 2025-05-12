@@ -1,5 +1,4 @@
 import { useDispatch } from 'react-redux';
-import css from './Contact.module.css';
 import { IoPerson } from "react-icons/io5";
 import { FaPhoneAlt } from "react-icons/fa";
 import { deleteContactThunk } from '../../redux/contactsOps.js';
@@ -13,20 +12,24 @@ export default function Contact({id, name, number}) {
   };
   
   return (
-    <div className={css.wrapperBox}>
-      <div className={css.contacts}>
-        <ul className={css.contact}>
-          <li><IoPerson /></li>
-          <li>{name}</li>
-        </ul>
-        <ul className={css.contact}>
-          <li><FaPhoneAlt /></li>
-          <li>{number}</li>
-        </ul>
+    <div className="card bg-neutral text-neutral-content w-full max-w-xl shadow-md">
+      <div className="card-body p-4 ">
+        <div className="flex items-center justify-between gap-4 flex-col">
+          <ul className="flex card-title">
+            <li><IoPerson /></li>
+            <li className="flex items-center gap-2 text-md">{name}</li>
+          </ul>
+          <ul className="flex card-title">
+            <li ><FaPhoneAlt /></li>
+            <li className="flex items-center gap-2 text-md">{number}</li>
+          </ul>
+          <div className="card-actions justify-end flex ">
+            <button onClick={handleDelete} className="btn btn-primary">
+              Delete
+            </button>
+          </div>
+        </div>
       </div>
-      <button onClick={handleDelete} className={css.deleteButton}>
-        Delete
-      </button>
     </div>
   );
 }

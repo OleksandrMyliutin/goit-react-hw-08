@@ -1,10 +1,16 @@
 import { useDispatch } from 'react-redux';
-import './App.css'
+// import './App.css'
 import ContactForm from './ContactForm/ContactForm'
-import ContactList from './ContactList/ContactList'
 import SearchBox from './SearchBox/SearchBox'
 import { useEffect } from 'react';
 import { fetchDataThunk } from '../redux/contactsOps.js';
+import Home from '../pages/Home.jsx';
+import Login from '../pages/Login.jsx';
+import Register from '../pages/Register.jsx';
+import NotFound from '../pages/NotFound.jsx';
+import Contacts from '../pages/Contacts.jsx';
+import { Route, Routes } from 'react-router-dom';
+import SharedLayout from './SharedLayout.jsx';
 
 
 
@@ -16,12 +22,15 @@ function App() {
 
   return (
     <>
-      <div>
-      <h1>PhoneBook</h1>
-      <ContactForm />
-      <SearchBox />
-      <ContactList />
-      </div>
+      <Routes>
+        <Route path='/' element={<SharedLayout/>}>
+          <Route index element={<Home/>}/>
+          <Route path='/contacts' element={<Contacts/>}/>
+        </Route>
+        <Route path='/login' element={<Login/>}/>
+        <Route path='/register' element={<Register/>}/>
+        <Route path='/*' element={<NotFound/>}/>
+      </Routes>
     </>
   )
 }
