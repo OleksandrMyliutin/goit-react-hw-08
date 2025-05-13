@@ -7,14 +7,18 @@ export default function Navigation() {
 
     return (
         <>
-        <NavLink to="/" className="btn btn-ghost normal-case text-xl">
-        Home
-        </NavLink>
+        <li>
+            <NavLink to="/" >
+            Home
+            </NavLink>
+        </li>
 
         {isLoggedIn && (
-        <NavLink to="/contacts" className="btn btn-ghost normal-case text-xl">
-            Contacts
-        </NavLink>
+        <li>
+            <NavLink to="/contacts">
+                Contacts
+            </NavLink>
+        </li>
         )}
     </>
     );
