@@ -10,14 +10,14 @@ import Register from '../pages/Register.jsx';
 import NotFound from '../pages/NotFound.jsx';
 import Contacts from '../pages/Contacts.jsx';
 import { Route, Routes } from 'react-router-dom';
-import SharedLayout from './SharedLayout.jsx';
+import SharedLayout from './Layout.jsx';
+import { refreshThunk } from '../redux/auth/operations.js';
 
-
-
-function App() {
+const App = () => {
   const dispatch =  useDispatch();
   useEffect(() => {
-    dispatch(fetchDataThunk())
+    dispatch(fetchDataThunk()),
+    dispatch(refreshThunk());
   }, [dispatch]);
 
   return (

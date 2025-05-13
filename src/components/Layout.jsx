@@ -1,14 +1,14 @@
 import React from 'react'
-import Header from './Header/Header'
+import AppBar from './AppBar/AppBar'
 import { Outlet } from 'react-router-dom'
 
-const SharedLayout = () => {
+const Layout = () => {
   return (
     <div>
-        <Header/>
+        <AppBar/>
         <Outlet/>
     </div>
   );
 };
 
-export default SharedLayout;
+export default Layout;
