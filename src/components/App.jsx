@@ -11,6 +11,7 @@ import Layout from './Layout.jsx';
 import { refreshThunk } from '../redux/auth/operations.js';
 import { selectIsRefreshing } from '../redux/auth/selectors.js';
 import PrivateRoute from './PrivateRoute/PrivateRoute.jsx';
+import RestrictedRoute from './RestrictedRoute/RestrictedRoute.jsx';
 
 const App = () => {
   const dispatch =  useDispatch();
@@ -28,10 +29,12 @@ const App = () => {
           <Route path='/contacts' element={
             <PrivateRoute>
               <Contacts/>
-            </PrivateRoute>}/>
+            </PrivateRoute>
+            }
+          />
         </Route>
-        <Route path='/login' element={<Login/>}/>
-        <Route path='/register' element={<Register/>}/>
+        <Route path='/login' element={<RestrictedRoute component ={<Login />} redirectTo= '/contacts'/>} />
+        <Route path='/register' element={<RestrictedRoute component ={<Register />} redirectTo= '/contacts'/>}/>
         <Route path='/*' element={<NotFound/>}/>
       </Routes>
     </>

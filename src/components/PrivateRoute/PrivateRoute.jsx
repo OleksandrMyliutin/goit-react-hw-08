@@ -6,7 +6,7 @@ import toast from "react-hot-toast";
 const PrivateRoute = ({children}) => {
     const isLoggedIn = useSelector(selectIsLoggedIn);
     if(!isLoggedIn) {
-        toast.error('You must be logged in to view this page');
+        toast.error('You need to log in to access this page');
         return <Navigate to='/login' />
     }
 
