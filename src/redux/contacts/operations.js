@@ -1,5 +1,4 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
 import { goItAPI } from '../auth/operations';
 
 
@@ -26,6 +25,7 @@ export const deleteContactThunk = createAsyncThunk('deleteContact', async (id, t
 export const addContactThunk = createAsyncThunk('addContact', async (body, thunkAPI) => {
     try{
         const response = await goItAPI.post('/contacts', body)
+        console.log('Token at POST time:', goItAPI.defaults.headers.common.Authorization);
         return response.data;
     }catch (error) {
         console.log(error);

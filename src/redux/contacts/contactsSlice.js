@@ -1,5 +1,6 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import { addContactThunk, deleteContactThunk, fetchDataThunk } from './operations.js';
+import { logoutThunk } from '../auth/operations.js';
 // https://6817394426a599ae7c39ae51.mockapi.io/contacts
 const initialState = {
     items: [],
@@ -21,6 +22,8 @@ const contactsSlice = createSlice({
         .addCase(addContactThunk.fulfilled, (state, action) => {
             state.items.push(action.payload);
         })
+        .addCase(logoutThunk.fulfilled, () => initialState)
+        
         .addMatcher(isAnyOf(fetchDataThunk.rejected, deleteContactThunk.rejected, addContactThunk.rejected), (state, action) => {
             state.isLoading = false;
             state.error = action.payload;

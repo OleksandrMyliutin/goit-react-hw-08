@@ -9,16 +9,23 @@ import Contacts from '../pages/Contacts.jsx';
 import { Route, Routes } from 'react-router-dom';
 import Layout from './Layout.jsx';
 import { refreshThunk } from '../redux/auth/operations.js';
-import { selectIsRefreshing } from '../redux/auth/selectors.js';
+import { selectIsLoggedIn, selectIsRefreshing } from '../redux/auth/selectors.js';
 import PrivateRoute from './PrivateRoute/PrivateRoute.jsx';
 import RestrictedRoute from './RestrictedRoute/RestrictedRoute.jsx';
 
 const App = () => {
   const dispatch =  useDispatch();
   const  isRefreshing = useSelector(selectIsRefreshing);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
   useEffect(() => {
-    dispatch(refreshThunk());
+    dispatch(refreshThunk())
   }, [dispatch]);
+
+  useEffect(() => {
+  if (isLoggedIn) {
+    dispatch(fetchDataThunk());
+  }
+}, [dispatch, isLoggedIn]);
 
   return isRefreshing ? null : (
     <>
