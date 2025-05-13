@@ -17,7 +17,6 @@ const App = () => {
   const dispatch =  useDispatch();
   const  isRefreshing = useSelector(selectIsRefreshing);
   useEffect(() => {
-    dispatch(fetchDataThunk()),
     dispatch(refreshThunk());
   }, [dispatch]);
 

@@ -11,7 +11,6 @@ const LoginForm = () => {
         password: ''
     };
     const handleSubmit = (values, options) => {
-        console.log(values);
         dispatch(loginThunk(values));
     }
   return (
