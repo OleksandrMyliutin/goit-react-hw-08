@@ -7,9 +7,9 @@ export default function UserMenu() {
     const dispatch = useDispatch();
 
     return (
-    <>
-        <li><span className="text-neutral-content font-bold from-neutral-500">Welcome, {user.name}</span></li>
+    <div className="flex items-center gap-2">
+        <span className="text-neutral-content font-bold from-neutral-500">Welcome, {user.name}</span>
         <li><button onClick={() => dispatch(logoutThunk())}>Logout</button></li>
-    </>
+    </div>
     );
 };
